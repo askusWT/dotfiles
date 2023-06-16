@@ -5,11 +5,11 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "daily"
+      interval: daily
       labels:
-      - 'GitHub Actions'
-      - 'Automated Testing'
-      - '[Type] Build Tooling'
+        - GitHub Actions
+        - Automated Testing
+        - "[Type] Build Tooling"
