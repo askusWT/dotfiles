@@ -133,7 +133,6 @@ fi
 APP_ATTN_PATTERNS=(
   'autoupdate.zsh'
   'sync_brews.sh'
-  'sync_fluxninja.sh'
   'brew'
   'git commit'
   'make'

@@ -1,4 +1,5 @@
-exa_options='--links --git --group --changed --time-style long-iso --icons'
+#!/bin/zsh
+alias exa_options='--links --git --group --changed --time-style long-iso --icons'
 # replace ls with exa
 alias ls='exa $(printf $exa_options)'
 alias tree='exa --tree $(printf $exa_options)'
