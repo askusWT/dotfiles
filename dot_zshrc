@@ -31,7 +31,7 @@ function set_terminal {
 			# test whether ~/.iterm2_profile_check_v2 doesn't exist
 			if [[ ! -e "${HOME}/.iterm2_profile_check_v2" ]]; then
         rm -f "${HOME}/.iterm2_profile_check"
-        if gum confirm "Do you want to use FluxNinja's bundled iTerm2 colors/font profile and matching wallpaper?"; then
+        if gum confirm "Do you want to use bundled iTerm2 colors/font profile and matching wallpaper?"; then
 					# install iterm2 profile
 					cp ~/sw/assets/iterm2_gruvbox.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/
 					# execute the script
@@ -113,7 +113,7 @@ if ! command -v brew &> /dev/null; then
   ~/sw/bin/autoupdate.zsh --force
 fi
 
-figlet -w 80 FluxNinja Zsh && echo "" 2&>/dev/null
+figlet -w 80 Zsh && echo "" 2&>/dev/null
 
 source ~/sw/assets/utils.zsh
 
@@ -157,7 +157,7 @@ func preexec() {
 
   # if last command contained "brew install" or "brew upgrade" or "brew uninstall" or "brew reinstall" the set _brew_completion_update=1
   if [[ "$LAST_COMMAND" =~ "brew install" ]] || [[ "$LAST_COMMAND" =~ "brew upgrade" ]] || [[ "$LAST_COMMAND" =~ "brew uninstall" ]] || [[ "$LAST_COMMAND" =~ "brew reinstall" ]]; then
-    
+
     _brew_completion_update=true
   fi
 }
@@ -174,8 +174,8 @@ func zshexit() {
 #remove gh status
 rm /tmp/gh_$$ &>/dev/null
 # remove watch on home directory
-watchman watch-del $HOME >/dev/null 
-figlet -w 80 FluxNinja zsh
+watchman watch-del $HOME >/dev/null
+figlet -w 80 zsh
 cowsay -d "zsh exiting... see you later..."
 sleep 0.5
 }
@@ -186,7 +186,7 @@ setopt interactivecomments
 
 eval $(thefuck --alias)
 
-source $(brew --prefix)/opt/asdf/libexec/asdf.sh 
+source $(brew --prefix)/opt/asdf/libexec/asdf.sh
 
 PS1="$(pwd) > "
 PROMPT_LAYOUT='<excuse><cheers><vcs><nl>[<cwd><? ><exit>] <char> '
@@ -508,10 +508,6 @@ export LANGTOOL_USERNAME=""
 export LANGTOOL_API_KEY=""
 export LANGTOOL_HTTP_URI=""
 
-# FluxNinja Aperture Tilt Env Vars
-export TILT_APERTURE_SSH_KEY_PUB=$HOME/.ssh/id_ed25519.pub
-export TILT_GRAFANA_REPO=$HOME/Work/fluxninja/grafana
-
 if [[ $OSTYPE == 'linux'* ]]; then
   export QT_QPA_FONTDIR=~/.local/share/fonts
 fi
@@ -580,8 +576,6 @@ if $AUTO_CLEAR_CACHES; then
     echo "Clearing go installation..."
     sudo rm -rf $HOME/go
     echo "Go installation cleared."
-    echo "Sync FluxNinja repos..."
-    $HOME/sw/bin/sync_fluxninja.sh
   fi
   if gum confirm "Do you want to prune docker builder cache?"; then
     echo "Pruning docker builder cache..."
@@ -628,7 +622,7 @@ if [[ $TERM == *"tmux"* || $TERM == *"screen"* || -n $TMUX ]]; then
   echo -e "${YELLOW_BRIGHT} Welcome to ${CYAN_BRIGHT}tmux${RESET}"
   echo -e "${YELLOW_BRIGHT} Press ${CYAN_BRIGHT}<C-a C-Space>${YELLOW_BRIGHT} for fuzzy menu - look for additional commands under ${CYAN_BRIGHT}menu${YELLOW_BRIGHT} selection${RESET}"
   echo -e "${YELLOW_BRIGHT} Press ${CYAN_BRIGHT}F12${YELLOW_BRIGHT} for tmux menu${RESET}"
-else 
+else
   sessions=$(tmux list-sessions 2&> /dev/null | cut -d ":" -f1)
   # check whether $sessions is not empty
   if [ -n "$sessions" ]; then

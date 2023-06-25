@@ -136,7 +136,7 @@ function notify_job(command, opts)
       opts or {},
       { title = table.concat(command, " "),
         icon = "",
-        timeout = time, 
+        timeout = time,
         replace = notification,
         hide_from_history = true,
       }
@@ -217,7 +217,7 @@ end
 
 function select_buffer_or_cancel(callback, cmd)
   local visual_mode = vim.fn.visualmode()
-  if visual_mode ~= 'V' and visual_mode ~= '' then 
+  if visual_mode ~= 'V' and visual_mode ~= '' then
     vim.ui.select({"Yes", "No"}, {
       prompt = "No visual selection, run on whole buffer?"
     }, function(choice, choice_idx)
@@ -265,7 +265,7 @@ if vim.env.OPENAI_API_KEY ~= nil then
     "question",
     "doc",
   }
-  
+
   local override_config = vim.g["codegpt_commands_defaults"]
 
   for _, command in ipairs(gpt_4_commands) do
@@ -414,9 +414,6 @@ require("scrollbar").setup({
 })
 
 require('tmux-awesome-manager').setup({
-  per_project_commands = { -- Configure your per project servers with
-      aperture = { { cmd = 'make generate-config-markdown', name = 'Make' } },
-  },
   session_name = 'Neovim Terminals',
   use_icon = true, -- use prefix icon
   icon = ' ', -- Prefix icon to use
@@ -465,7 +462,7 @@ function! s:DiagnosticNotify() abort
   if get(l:info, 'error', 0)
     let l:level = 'error'
   endif
- 
+
   if get(l:info, 'error', 0)
     call add(l:msgs, ' Errors: ' . l:info['error'])
   endif

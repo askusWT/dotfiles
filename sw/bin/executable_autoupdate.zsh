@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bininiti/env zsh
 
 # check whether this script is being eval'ed
 [[ $0 =~ "autoupdate.zsh" ]] && sourced=0 || sourced=1
@@ -124,9 +124,6 @@ if [ ${last_system} -gt ${system_seconds} ] || [ $force_update -eq 1 ]; then
 	# update tldr
 	tldr --update
 
-  revolver update "Updating FluxNinja repos..."
-  $HOME/sw/bin/sync_fluxninja.sh
-  
   if [[ $TERM == *"tmux"* || $TERM == *"screen"* || -n $TMUX ]]; then
     revolver update "Reloading tmux config..."
     tmux source-file $HOME/.tmux.conf

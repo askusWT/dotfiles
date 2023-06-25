@@ -46,7 +46,7 @@ if has('nvim')
 else
   set clipboard^=unnamed,unnamedplus
 endif
-    
+
 vmap <C-c> "+y
 
 let mapleader='\\'
@@ -187,7 +187,7 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_bo
       \ 'highlighter': wilder#basic_highlighter(),
       \ 'highlights': {
       \   'border': 'Normal',
-      \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#F06929'}]),  
+      \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#F06929'}]),
       \ },
       \ 'left': [
       \   ' ', wilder#popupmenu_devicons(),
@@ -242,11 +242,11 @@ autocmd FileType markdown let g:indentLine_enabled=0
 
 " install coc extensions
 let g:coc_global_extensions = [
-      \ 'coc-highlight', 
-      \ 'coc-go', 
-      \ 'coc-explorer', 
-      \ 'coc-pairs', 
-      \ 'coc-yank', 
+      \ 'coc-highlight',
+      \ 'coc-go',
+      \ 'coc-explorer',
+      \ 'coc-pairs',
+      \ 'coc-yank',
       \ 'coc-vale',
       \ 'coc-html',
       \ 'coc-yaml',
@@ -260,7 +260,7 @@ let g:coc_global_extensions = [
       \ 'coc-reveal',
       \ 'coc-swagger',
       \ 'coc-toml',
-      \ 'coc-markmap', 
+      \ 'coc-markmap',
       \ 'coc-diagnostic',
       \ 'coc-prettier',
       \ 'coc-marketplace',
@@ -486,7 +486,7 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 
-function! OutlineToggle() 
+function! OutlineToggle()
   if get(b:,'coc_outline_visible',0) == 0
     call CocActionAsync('showOutline', 1)
     let b:coc_outline_visible = 1
@@ -519,12 +519,12 @@ function! ToggleDiagnostics() abort
       " the location window is closed
       if empty(&l:buftype)
           if (&filetype !=# 'floaterm') && (&buftype !=# 'terminal')
-            execute 'CocDiagnostics ' . g:diagnostic_window_size 
-            execute 'botright lwindow' 
+            execute 'CocDiagnostics ' . g:diagnostic_window_size
+            execute 'botright lwindow'
             execute 'wincmd p'
           endif
       endif
-    endif  
+    endif
   else
     if g:auto_diagnostic_window
       call v:lua.notify('LSP Diagnostics Window', 'Disabling auto-open', 'info')
@@ -540,11 +540,11 @@ endfunction
 
 augroup coc_diag
   " shutdown coc on exit
-  autocmd VimLeavePre * :call coc#rpc#kill() 
+  autocmd VimLeavePre * :call coc#rpc#kill()
   " auto close outline if it's the last window
   autocmd BufEnter * call s:CheckDanglingWindows()
   function! s:CheckDanglingWindows() abort
-    if ((&filetype ==# 'coctree' 
+    if ((&filetype ==# 'coctree'
           \ || &filetype ==# 'coc-explorer'
           \ || &filetype ==# 'Mundo'
           \ || &filetype ==# 'MundoDiff'
@@ -601,7 +601,7 @@ autocmd User CocNvimInit call timer_start(250, {-> CocExtClean()})
 " it uses the <tab> which copilot uses
 let g:UltiSnipsExpandTrigger="<C-l>"
 
-" FZF 
+" FZF
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -680,7 +680,7 @@ endfunction
 " open list of sessions in FZF window
 function! OpenSessions()
   let session_path = g:startify#get_session_path()
-  try 
+  try
     let prev_action = g:fzf_action
     let g:fzf_action = {
           \ 'enter': 'source' }
@@ -699,9 +699,9 @@ let g:startify_lists = [
       \ { 'type': function('s:gitModified'),  'header': ['    Git Modified']},
       \ ]
 
-let figlet_message = 'FluxNinja Neovim'
+let figlet_message = 'GP Neovim'
 if !has('nvim')
-  let figlet_message = 'FluxNinja Vim'
+  let figlet_message = 'GP Vim'
 endif
 
 let g:startify_custom_header =
@@ -771,7 +771,7 @@ execute CleanupSessionFiles()
 " other plugins.
 augroup startify
   if has('nvim')
-    autocmd TabNewEntered * 
+    autocmd TabNewEntered *
           \ if empty(expand('%')) && empty(&l:buftype) |
           \   Startify |
           \ endif
@@ -788,10 +788,10 @@ augroup startify
 augroup end
 
 " auto close outline, diagnostics if it's open on session save
-let g:startify_session_before_save = [ 
+let g:startify_session_before_save = [
       \ 'silent! execute "lclose" | execute "cclose"',
-      \ 'silent! call CocAction("hideOutline")', 
-      \ 'silent! MundoHide"' 
+      \ 'silent! call CocAction("hideOutline")',
+      \ 'silent! MundoHide"'
       \ ]
 
 function! VisualExecWithArgs(cmd, args) range
@@ -850,7 +850,7 @@ endfunction
 function! VisualExec(cmd) range
   if visualmode() != 'V' && visualmode() != ''
     if has('nvim')
-      " select_buffer_or_cancel_nvim now accepts callback, cmd and args. 
+      " select_buffer_or_cancel_nvim now accepts callback, cmd and args.
       call luaeval('select_buffer_or_cancel(_A.callback, _A.cmd)', {'callback': 'VisualExec', 'cmd': a:cmd})
       return
     else
@@ -942,9 +942,9 @@ call fuzzymenu#AddAll({
     \ 'for': {'exists': 'g:coc_enabled'}})
 
 call fuzzymenu#AddAll({
-      \ ' Markdown Preview': {'exec': 'CocCommand markdown-preview-enhanced.openPreview'}, 
-      \ ' Markdown Map': {'exec': 'CocCommand markmap.watch'}, 
-      \ ' Markdown Generate Slides': {'exec': 'CocCommand reveal.it'}, 
+      \ ' Markdown Preview': {'exec': 'CocCommand markdown-preview-enhanced.openPreview'},
+      \ ' Markdown Map': {'exec': 'CocCommand markmap.watch'},
+      \ ' Markdown Generate Slides': {'exec': 'CocCommand reveal.it'},
       \ },
       \ {'for': {'ft': 'md', 'exists': 'g:coc_enabled'}, 'tags': ['markdown', 'coc']})
 
@@ -1102,7 +1102,7 @@ endif
       \ {'tags': ['visual','chatgpt']})
   endif
 
-" normal mode operators (For text objects) 
+" normal mode operators (For text objects)
 
 " Comment/Uncomment (gc)
 " override gcgc to do single line comment/uncomment to make it consistent with
@@ -1135,13 +1135,13 @@ call fuzzymenu#AddAll(ops,
 
 call fuzzymenu#Add(' Operators (text objects and motions)', {
       \ 'exec': 'FzmOps'}, {
-      \ 'after': 'call fuzzymenu#InsertModeIfNvim()', 
+      \ 'after': 'call fuzzymenu#InsertModeIfNvim()',
       \ 'tags': ['normal','vim']
       \})
 
 call fuzzymenu#AddAll({
-      \' Apply setting (persist)': { 'exec': 'call fuzzymenu#vimconfig#ApplySetting(1)'}, 
-      \' Apply setting (temporary)': { 'exec': 'call fuzzymenu#vimconfig#ApplySetting(0)'}, 
+      \' Apply setting (persist)': { 'exec': 'call fuzzymenu#vimconfig#ApplySetting(1)'},
+      \' Apply setting (temporary)': { 'exec': 'call fuzzymenu#vimconfig#ApplySetting(0)'},
       \' Create a key mapping (persist)': { 'exec': 'call fuzzymenu#vimconfig#MapKey({})' },
       \ },
       \ { 'after': 'call fuzzymenu#InsertModeIfNvim()', 'tags': ['misc']})
@@ -1149,7 +1149,7 @@ call fuzzymenu#AddAll({
 " Maintain undo history between sessions
 if has("nvim")
   set undodir=~/.local/share/nvim/undodir
-else 
+else
   set undodir=~/.vim/undodir
 endif
 

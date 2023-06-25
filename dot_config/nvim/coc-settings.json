@@ -162,11 +162,6 @@
     "hiddenFalsePositives": "workspaceFolderExternalFile"
   },
   "ltex.diagnosticSeverity": "warning",
-  "ltex.dictionary": {
-    "en-US": [
-      ":~/Work/fluxninja/aperture/.github/styles/Vocab/FluxNinja/accept.txt"
-    ]
-  },
   "ltex.completionEnabled": true,
   /*  "ltex.enabled": [
     "bibtex",
@@ -197,12 +192,6 @@
   "cSpell.showStatus": false,
   "cSpell.allowCompoundWords": true,
   "cSpell.userWords": [],
-  "cSpell.dictionaryDefinitions": [
-    {
-      "name": "FluxNinja",
-      "path": "${userHome}/Work/fluxninja/aperture/.github/styles/Vocab/FluxNinja/accept.txt"
-    }
-  ],
   "cSpell.dictionaries": [
     "FluxNinja",
     "wordsEn",
