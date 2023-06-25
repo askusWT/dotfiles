@@ -28,6 +28,7 @@ tasks:
     init: echo 'Setting up env'
     command: |
       echo 'Adding variables...'
+      export CHEZMOI_SOURCE_DIR="/workspace/dotfiles"
       echo 'Done'
 
 ports:
