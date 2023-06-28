@@ -10,6 +10,7 @@ pyqtwebengine = "*"
 docutils = "*"
 sphinx = "*"
 pyenchant = "*"
+leo = {editable = true, path = "/home/gitpod/.venv/leo-editor"}
 
 [dev-packages]
 
