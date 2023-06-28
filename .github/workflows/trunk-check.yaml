@@ -18,6 +18,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1.1.1
-        with:
-          trunk-token: ${{ secrets.TRUNK_TOKEN }}
+        uses: trunk-io/trunk-action@v1
